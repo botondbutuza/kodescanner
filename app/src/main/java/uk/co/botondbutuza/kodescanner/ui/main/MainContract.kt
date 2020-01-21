@@ -1,19 +1,17 @@
-package uk.co.botondbutuza.blogger.ui.main
+package uk.co.botondbutuza.kodescanner.ui.main
 
-import uk.co.botondbutuza.blogger.common.data.models.Post
-import uk.co.botondbutuza.blogger.common.ui.BaseContract
+import uk.co.botondbutuza.kodescanner.common.data.local.models.FlightItinerary
+import uk.co.botondbutuza.kodescanner.common.ui.BaseContract
 
 interface MainContract {
 
     interface View : BaseContract.View {
 
-        fun onPostsReady(posts: List<Post>)
+        fun onFlightsReady(flights: List<FlightItinerary>)
     }
 
     interface Presenter : BaseContract.Presenter {
 
-        fun requestPosts()
-
-        fun requestPostsRemote()
+        fun requestFlights()
     }
 }

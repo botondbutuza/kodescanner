@@ -1,7 +1,7 @@
-package uk.co.botondbutuza.kodescanner.common.data
+package uk.co.botondbutuza.kodescanner.common.data.remote
 
 import io.reactivex.Single
-import uk.co.botondbutuza.kodescanner.common.data.models.FlightResponseModel
+import uk.co.botondbutuza.kodescanner.common.data.remote.models.FlightResponseModel
 
 
 /**
@@ -10,9 +10,6 @@ import uk.co.botondbutuza.kodescanner.common.data.models.FlightResponseModel
 
 interface RemoteDataSource {
 
-    fun posts(): Single<List<FlightResponseModel>>
+    fun getFlights(): Single<FlightResponseModel>
 
-    fun comments(): Single<List<Comment>>
-
-    fun users(): Single<List<User>>
 }

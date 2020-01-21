@@ -1,4 +1,4 @@
-package uk.co.botondbutuza.blogger.common.dagger.module
+package uk.co.botondbutuza.kodescanner.common.dagger.module
 
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
@@ -9,10 +9,10 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import uk.co.botondbutuza.blogger.common.dagger.scope.Remote
-import uk.co.botondbutuza.blogger.common.data.BlogContentApi
-import uk.co.botondbutuza.blogger.common.data.RemoteDataSource
-import uk.co.botondbutuza.blogger.common.data.repository.RemoteDataSourceImpl
+import uk.co.botondbutuza.kodescanner.common.dagger.scope.Remote
+import uk.co.botondbutuza.kodescanner.common.data.remote.RemoteDataSource
+import uk.co.botondbutuza.kodescanner.common.data.remote.RouteContentApi
+import uk.co.botondbutuza.kodescanner.common.data.repository.RemoteDataSourceImpl
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
@@ -20,13 +20,13 @@ import javax.inject.Singleton
 class RemoteDataSourceModule {
 
     @Provides @Remote @Singleton
-    internal fun provideDataSource(blogContentApi: BlogContentApi): RemoteDataSource = RemoteDataSourceImpl(blogContentApi)
+    internal fun provideDataSource(routeContentApi: RouteContentApi): RemoteDataSource = RemoteDataSourceImpl(routeContentApi)
 
     @Provides @Singleton
-    internal fun provideGson(): Gson = GsonBuilder().create()
+    internal fun provideGson() = GsonBuilder().create()
 
     @Provides @Singleton
-    internal fun provideServerInterface(gson: Gson, okHttpClient: OkHttpClient): BlogContentApi = getServerInterface(getRetrofit(gson, okHttpClient))
+    internal fun provideServerInterface(gson: Gson, okHttpClient: OkHttpClient) = getServerInterface(getRetrofit(gson, okHttpClient))
 
     @Provides @Singleton
     internal fun provideOkHttpClient(): OkHttpClient {
@@ -40,19 +40,18 @@ class RemoteDataSourceModule {
             .build()
     }
 
-    private fun getRetrofit(gson: Gson, okHttpClient: OkHttpClient): Retrofit {
-        return Retrofit.Builder()
+    private fun getRetrofit(gson: Gson, okHttpClient: OkHttpClient) =
+        Retrofit.Builder()
             .baseUrl(API_ENDPOINT)
             .addConverterFactory(GsonConverterFactory.create(gson))
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .client(okHttpClient)
             .build()
-    }
 
-    private fun getServerInterface(retrofit: Retrofit): BlogContentApi = retrofit.create(BlogContentApi::class.java)
+    private fun getServerInterface(retrofit: Retrofit) = retrofit.create(RouteContentApi::class.java)
 
 
     companion object {
-        private const val API_ENDPOINT = "http://jsonplaceholder.typicode.com/"
+        private const val API_ENDPOINT = "https://s3-eu-west-1.amazonaws.com/skyscanner-prod-takehome-test/"
     }
 }

@@ -1,4 +1,4 @@
-package uk.co.botondbutuza.kodescanner.common.data.models
+package uk.co.botondbutuza.kodescanner.common.data.remote.models
 
 data class FlightLegModel(
     val id: String,

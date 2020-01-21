@@ -1,16 +1,13 @@
 package uk.co.botondbutuza.kodescanner.common.data.repository
 
 import uk.co.botondbutuza.kodescanner.common.data.local.models.Flight
-import uk.co.botondbutuza.kodescanner.common.data.local.models.FlightRoute
 import uk.co.botondbutuza.kodescanner.common.data.remote.models.FlightLegModel
 
-class FlightRouteMapper {
+class FlightMapper {
 
-    fun map(leg: FlightLegModel): FlightRoute {
-        return FlightRoute(
-            Flight("time", "airport", leg.arrival_time, leg.departure_airport),
-            Flight("time", "airport", "time", leg.arrival_airport),
-            leg.airline_name
+    fun map(leg: FlightLegModel): Flight {
+        return Flight(
+            leg.departure_time, leg.departure_airport, leg.arrival_time, leg.arrival_airport, leg.stops, leg.airline_name, leg.airline_id
         )
     }
 }

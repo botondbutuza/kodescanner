@@ -1,11 +1,11 @@
-package uk.co.botondbutuza.blogger.common.ui
+package uk.co.botondbutuza.kodescanner.common.ui
 
 import android.os.Bundle
 import android.support.annotation.LayoutRes
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
-import uk.co.botondbutuza.blogger.BloggerApp
-import uk.co.botondbutuza.blogger.R
+import uk.co.botondbutuza.kodescanner.KodeScannerApp
+import uk.co.botondbutuza.kodescanner.R
 
 abstract class BaseActivity(@LayoutRes private val layoutResId: Int) : AppCompatActivity(), BaseContract.View {
 
@@ -43,5 +43,5 @@ abstract class BaseActivity(@LayoutRes private val layoutResId: Int) : AppCompat
 
     // Internal.
 
-    internal fun app(): BloggerApp = application as BloggerApp
+    internal fun app(): KodeScannerApp = application as KodeScannerApp
 }

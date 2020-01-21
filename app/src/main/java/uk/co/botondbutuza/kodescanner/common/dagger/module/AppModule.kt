@@ -1,4 +1,4 @@
-package uk.co.botondbutuza.blogger.common.dagger.module
+package uk.co.botondbutuza.kodescanner.common.dagger.module
 
 import android.content.Context
 

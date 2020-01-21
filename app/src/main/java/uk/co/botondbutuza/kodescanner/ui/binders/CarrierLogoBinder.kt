@@ -1,4 +1,4 @@
-package uk.co.botondbutuza.kodescanner.ui.main
+package uk.co.botondbutuza.kodescanner.ui.binders
 
 import android.widget.ImageView
 import com.squareup.picasso.Picasso

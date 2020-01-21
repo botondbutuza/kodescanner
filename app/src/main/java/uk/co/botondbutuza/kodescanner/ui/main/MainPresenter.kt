@@ -1,11 +1,11 @@
-package uk.co.botondbutuza.blogger.ui.main
+package uk.co.botondbutuza.kodescanner.ui.main
 
 import io.reactivex.disposables.CompositeDisposable
-import uk.co.botondbutuza.blogger.common.data.repository.BlogDataRepository
+import uk.co.botondbutuza.kodescanner.common.data.repository.FlightsRepository
 import javax.inject.Inject
 
 class MainPresenter @Inject constructor(
-    private val repository: BlogDataRepository,
+    private val repository: FlightsRepository,
     private val view: MainContract.View
 ) : MainContract.Presenter {
     private val subscriptions = CompositeDisposable()
@@ -14,23 +14,12 @@ class MainPresenter @Inject constructor(
         subscriptions.clear()
     }
 
-    override fun requestPosts() {
+    override fun requestFlights() {
         subscriptions.add(
             repository
-                .getPosts()
+                .getFlights()
                 .subscribe(
-                    view::onPostsReady,
-                    view::onError
-                )
-        )
-    }
-
-    override fun requestPostsRemote() {
-        subscriptions.add(
-            repository
-                .getPostsRemote()
-                .subscribe(
-                    view::onPostsReady,
+                    view::onFlightsReady,
                     view::onError
                 )
         )

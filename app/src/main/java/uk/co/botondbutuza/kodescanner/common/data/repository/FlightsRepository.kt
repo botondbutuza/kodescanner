@@ -2,17 +2,17 @@ package uk.co.botondbutuza.kodescanner.common.data.repository
 
 import io.reactivex.Single
 import uk.co.botondbutuza.kodescanner.common.dagger.scope.Remote
-import uk.co.botondbutuza.kodescanner.common.data.local.models.FlightRoute
+import uk.co.botondbutuza.kodescanner.common.data.local.models.FlightItinerary
 import uk.co.botondbutuza.kodescanner.common.data.remote.RemoteDataSource
 
 
-class FlightsInteractor(
+class FlightsRepository(
     @param:Remote @field:Remote private val remoteDataSource: RemoteDataSource,
-    private val flightsMapper: FlightsMapper
+    private val flightItineraryMapper: FlightItineraryMapper
 ) {
 
-    fun getFlights(): Single<List<FlightRoute>> =
+    fun getFlights(): Single<List<FlightItinerary>> =
         remoteDataSource
             .getFlights()
-            .map { flightsMapper.map(it) }
+            .map { flightItineraryMapper.map(it) }
 }

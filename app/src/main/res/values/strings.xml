@@ -1,5 +1,3 @@
 <resources>
-    <string name="app_name">Blogger</string>
-    <string name="by_username">by %1$s</string>
-    <string name="comment_count">%1$d comments</string>
+    <string name="app_name">KodeScanner</string>
 </resources>

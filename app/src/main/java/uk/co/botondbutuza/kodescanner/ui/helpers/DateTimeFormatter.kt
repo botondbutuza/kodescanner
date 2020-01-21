@@ -1,4 +1,4 @@
-package uk.co.botondbutuza.kodescanner.ui.main
+package uk.co.botondbutuza.kodescanner.ui.helpers
 
 import java.text.SimpleDateFormat
 import java.util.*

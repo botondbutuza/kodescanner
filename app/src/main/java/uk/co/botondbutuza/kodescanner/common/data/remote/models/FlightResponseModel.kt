@@ -1,7 +1,7 @@
-package uk.co.botondbutuza.kodescanner.common.data.models
+package uk.co.botondbutuza.kodescanner.common.data.remote.models
 
 
 data class FlightResponseModel(
-    val itineraryModels: List<FlightItineraryModel>,
+    val itineraries: List<FlightItineraryModel>,
     val legs: List<FlightLegModel>
 )

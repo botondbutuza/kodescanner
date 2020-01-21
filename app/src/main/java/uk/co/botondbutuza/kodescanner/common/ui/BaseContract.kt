@@ -1,4 +1,4 @@
-package uk.co.botondbutuza.blogger.common.ui
+package uk.co.botondbutuza.kodescanner.common.ui
 
 interface BaseContract {
 

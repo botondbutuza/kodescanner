@@ -1,4 +1,4 @@
-package uk.co.botondbutuza.blogger.common.dagger.scope
+package uk.co.botondbutuza.kodescanner.common.dagger.scope
 
 import javax.inject.Scope
 

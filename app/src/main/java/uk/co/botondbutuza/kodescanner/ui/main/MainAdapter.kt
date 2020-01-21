@@ -1,22 +1,28 @@
-package uk.co.botondbutuza.blogger.ui.main
+package uk.co.botondbutuza.kodescanner.ui.main
 
 import android.view.View
-import kotlinx.android.synthetic.main.item_post.view.*
-import uk.co.botondbutuza.blogger.R
-import uk.co.botondbutuza.blogger.common.data.models.Post
-import uk.co.botondbutuza.blogger.common.ui.BaseRecyclerViewAdapter
-import uk.co.botondbutuza.blogger.common.ui.BaseRecyclerViewHolder
+import kotlinx.android.synthetic.main.item_flight_itinerary.view.*
+import uk.co.botondbutuza.kodescanner.R
+import uk.co.botondbutuza.kodescanner.common.data.local.models.FlightItinerary
+import uk.co.botondbutuza.kodescanner.common.ui.BaseRecyclerViewAdapter
+import uk.co.botondbutuza.kodescanner.common.ui.BaseRecyclerViewHolder
+import uk.co.botondbutuza.kodescanner.ui.binders.FlightBinder
 import javax.inject.Inject
 
-class MainAdapter @Inject constructor() : BaseRecyclerViewAdapter<Post, MainAdapter.Holder>(R.layout.item_post) {
+class MainAdapter @Inject constructor(
+    private val flightBinder: FlightBinder
+) : BaseRecyclerViewAdapter<FlightItinerary, MainAdapter.Holder>(R.layout.item_flight_itinerary) {
 
     override fun createViewHolderForView(view: View, viewType: Int) = Holder(view)
 
 
-    class Holder(itemView: View) : BaseRecyclerViewHolder<Post>(itemView) {
+    inner class Holder(itemView: View) : BaseRecyclerViewHolder<FlightItinerary>(itemView) {
 
-        override fun bind(item: Post) {
-            itemView.title.text = item.title
+        override fun bind(item: FlightItinerary) {
+            flightBinder.bind(itemView, item.outbound, item.inbound)
+
+            itemView.price.text = item.price
+            itemView.agent.text = "via " + item.agent
         }
 
         override fun unbind() {
